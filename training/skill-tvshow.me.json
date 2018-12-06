@@ -1,0 +1,480 @@
+{
+  "name": "tvshow.me",
+  "intents": [
+    {
+      "intent": "genero_terror",
+      "examples": [
+        {
+          "text": "Quero tomar susto"
+        },
+        {
+          "text": "Gosto de terror"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "tudo_bem",
+      "examples": [
+        {
+          "text": "tudo bem"
+        },
+        {
+          "text": "beleza"
+        },
+        {
+          "text": "suave"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "oi",
+      "examples": [
+        {
+          "text": "opa"
+        },
+        {
+          "text": "ola"
+        },
+        {
+          "text": "eae"
+        },
+        {
+          "text": "olar"
+        },
+        {
+          "text": "bom dia"
+        },
+        {
+          "text": "oi"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "genero_heroi",
+      "examples": [
+        {
+          "text": "Homem de Ferro"
+        },
+        {
+          "text": "gosto de super-herois"
+        },
+        {
+          "text": "marvel"
+        },
+        {
+          "text": "DC"
+        },
+        {
+          "text": "Vingadores"
+        },
+        {
+          "text": "Bat man"
+        },
+        {
+          "text": "Capitao America"
+        },
+        {
+          "text": "Quadrinhos"
+        },
+        {
+          "text": "Comics"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "genero_drama",
+      "examples": [
+        {
+          "text": "Meu dia não foi bom"
+        },
+        {
+          "text": "Estou cansado"
+        },
+        {
+          "text": "Drama"
+        },
+        {
+          "text": "Série Triste"
+        },
+        {
+          "text": "Série para chorar"
+        },
+        {
+          "text": "Estou triste"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "series",
+      "examples": [
+        {
+          "text": "Me fala uma série boa?"
+        },
+        {
+          "text": "me indica uma serie"
+        },
+        {
+          "text": "Qual série você gosta?"
+        },
+        {
+          "text": "Me diga uma série nova"
+        },
+        {
+          "text": "Me recomenda uma série?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "genero_indecisao",
+      "examples": [
+        {
+          "text": "tanto faz"
+        },
+        {
+          "text": "qualquer uma"
+        },
+        {
+          "text": "me indica uma"
+        },
+        {
+          "text": "nao sei"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "number",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "cpf",
+          "synonyms": [
+            "([0-9])"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "genero",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "drama",
+          "synonyms": [
+            "tristeza"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "herois",
+          "synonyms": [
+            "marvel",
+            "DC",
+            "homem de ferro",
+            "super-homem",
+            "bat man",
+            "homem aranha",
+            "comics"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "terror",
+          "synonyms": [
+            "susto",
+            "medo",
+            "calafrio",
+            "halloween"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "western",
+          "synonyms": [
+            "velho oeste",
+            "cowboy",
+            "bang bang"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-time",
+      "values": []
+    },
+    {
+      "entity": "sys-date",
+      "values": []
+    },
+    {
+      "entity": "sys-percentage",
+      "values": []
+    },
+    {
+      "entity": "sys-currency",
+      "values": []
+    },
+    {
+      "entity": "sys-number",
+      "values": []
+    }
+  ],
+  "language": "pt-br",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "description": "",
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Então você vai gostar de Sabrina"
+              },
+              {
+                "text": "Então você vai gostar de Mansão Hill"
+              },
+              {
+                "text": ""
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "parent": "node_4_1541029223853",
+      "metadata": {},
+      "conditions": "@genero:terror",
+      "dialog_node": "node_7_1541029557789",
+      "previous_sibling": "node_5_1541029299877"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "hm... vou te indicar uma serie dramatica"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "parent": "node_4_1541029223853",
+      "metadata": {},
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_3_1541029122078"
+      },
+      "conditions": "#genero_indecisao",
+      "dialog_node": "node_8_1541029682427",
+      "previous_sibling": "node_7_1541029557789"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Então você vai gostar de Demolidor"
+              },
+              {
+                "text": "Então você vai gostar de Luke Cage"
+              },
+              {
+                "text": "Então você vai gostar de Jéssica Jones"
+              },
+              {
+                "text": "Então você vai gostar de Raio Negro"
+              },
+              {
+                "text": "Então você vai gostar de Punho de Ferro"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "parent": "node_4_1541029223853",
+      "metadata": {},
+      "conditions": "@genero:herois",
+      "dialog_node": "node_5_1541029299877",
+      "previous_sibling": "node_3_1541029122078"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Então você vai gostar de House of Cards"
+              },
+              {
+                "text": "Então você vai gostar de Breaking Bad"
+              },
+              {
+                "text": "Então você vai gostar de Revenge"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "parent": "node_4_1541029223853",
+      "metadata": {},
+      "conditions": "@genero:drama",
+      "dialog_node": "node_3_1541029122078"
+    },
+    {
+      "type": "standard",
+      "title": "Em outros casos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Eu não entendi. Você pode tentar reformular a frase."
+              },
+              {
+                "text": "Você pode reformular sua afirmação? Eu não estou entendendo."
+              },
+              {
+                "text": "Eu não entendi o sentido."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "Em outros casos",
+      "previous_sibling": "node_4_1541029223853"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Oi, beleza e voce?"
+              },
+              {
+                "text": "Tudo tranquilo"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "#oi",
+      "dialog_node": "node_1_1541028341217",
+      "previous_sibling": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "numero"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "@number",
+      "dialog_node": "node_9_1541031899708",
+      "previous_sibling": "node_1_1541028341217"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Qual genero de serie voce gosta?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "#series",
+      "dialog_node": "node_4_1541029223853",
+      "previous_sibling": "node_9_1541031899708"
+    },
+    {
+      "type": "standard",
+      "title": "Bem-vindo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Olá. Como posso te ajudar?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "welcome",
+      "dialog_node": "Bem-vindo"
+    }
+  ],
+  "workspace_id": "9c908166-6d1a-411a-a4af-bb04855d1f81",
+  "counterexamples": [],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    },
+    "disambiguation": {
+      "prompt": "Você quis dizer:",
+      "none_of_the_above_prompt": "Nenhuma das anteriores"
+    },
+    "human_agent_assist": {
+      "prompt": "Você quis dizer:"
+    }
+  },
+  "learning_opt_out": false,
+  "status": "Available"
+}
